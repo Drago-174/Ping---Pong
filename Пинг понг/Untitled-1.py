@@ -51,6 +51,12 @@ ball = GameSprite('22.png', 280, 200,40, 40, 15)
 dx = 3
 dy = 3
 
+font.init()
+font = font.Font(None, 35)
+lose1 = font.render('PlAYER 1 lOSE', True ,(180, 0, 0))
+lose2 = font.render('PlAYER 2 lOSE', True ,(180, 0, 0))
+
+
 while game:
 
     for e in event.get():
@@ -75,7 +81,14 @@ while game:
 
 
 
+        if ball.rect.x < 0:
+            finish = True
+            window.blit(lose1, (200, 200))
 
+        if ball.rect.x > win_width:
+            finish = True
+            window.blit(lose2, (200, 200))
+            
 
         racket.update_l()
         racket2.update_r()
@@ -84,4 +97,7 @@ while game:
         racket2.reset()
         ball.reset()
 
+
+    display.update()
+    clock.tick(FPS)
 
