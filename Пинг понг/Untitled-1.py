@@ -112,10 +112,10 @@ while game:
         window.blit(score_r, (win_width-25, 10))
 
 
-        if ball.rect.y > win_width:
+        if ball.rect.x > win_width:
             score_left +=1
             ball.rect.x = 280
-            ball.recc.y = 200
+            ball.rect.y = 200
 
         
 
@@ -129,4 +129,3 @@ while game:
 
     display.update()
     clock.tick(FPS)
-
