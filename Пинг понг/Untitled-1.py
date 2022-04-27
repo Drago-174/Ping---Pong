@@ -1,5 +1,6 @@
 from pygame import *
 
+
 back = (42, 169, 219)
 win_width = 800
 win_height = 700
@@ -42,6 +43,10 @@ clock = time.Clock()
 
 FPS = 60
 
+line = 0
+
+
+
 
 racket = Player('12.png' , 30,200,200, 200, 15)
 racket2 = Player('12.png' , 600,200,200, 200, 15)
@@ -57,6 +62,14 @@ lose1 = font.render('PlAYER 1 lOSE', True ,(180, 0, 0))
 lose2 = font.render('PlAYER 2 lOSE', True ,(180, 0, 0))
 
 
+score_left = 0
+
+score_right = 0
+
+
+
+
+Balls = -2
 while game:
 
     for e in event.get():
@@ -81,14 +94,30 @@ while game:
 
 
 
-        if ball.rect.x < 0:
-            finish = True
-            window.blit(lose1, (200, 200))
 
-        if ball.rect.x > win_width:
-            finish = True
-            window.blit(lose2, (200, 200))
+        if ball.rect.x < 0:
+            ball.rect.x = 280
+            ball.rect.y = 200
+            score_right +=1
+            #dx *= Balls - 0,5
+        
             
+
+
+        
+        
+        score_l = font.render(str(score_left), True , (0, 0, 0))
+        score_r = font.render(str(score_right), True , (0, 0, 0))
+        window.blit(score_l, (10,10))
+        window.blit(score_r, (win_width-25, 10))
+
+
+        if ball.rect.y > win_width:
+            score_left +=1
+            ball.rect.x = 280
+            ball.recc.y = 200
+
+        
 
         racket.update_l()
         racket2.update_r()
