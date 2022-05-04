@@ -46,10 +46,14 @@ FPS = 60
 line = 0
 
 
+mixer.init()
+mixer.music.load('213.ogg')
+mixer.music.set_volume(2.2)
+mixer.music.play()
+ssound = mixer.Sound('02934.ogg')
 
-
-racket = Player('12.png' , 30,200,200, 200, 15)
-racket2 = Player('12.png' , 600,200,200, 200, 15)
+racket = Player('22222222.jpg' , -150,200,200, 145, 15)
+racket2 = Player('1111111.jpg' , 750,200,200, 145, 15)
 
 ball = GameSprite('22.png', 280, 200,40, 40, 15)
 
@@ -117,7 +121,17 @@ while game:
             ball.rect.x = 280
             ball.rect.y = 200
 
-        
+
+        if score_left >= 5:
+            finish= True
+            window.blit(lose1, (260,220))
+
+        if score_right >= 5:
+            finish= True
+            window.blit(lose2, (260,220))
+
+
+
 
         racket.update_l()
         racket2.update_r()
